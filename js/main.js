@@ -112,8 +112,26 @@ function deleteImage(element, imageID){
     }
 }
 
-// function to filter images per album
+// listener to filter images per album and adjust the URL to represent current filter
 filter.onchange = function() {
     let selectedOption = filter.options[filter.selectedIndex].value;
     renderImages(selectedOption);
+    let url = window.location.href.split('?');
+    history.pushState('no data to be passed', 'Images, images everywhere!',  url[0] + '?album=' + selectedOption);
 }
+
+// read params in URL and set filter based on params
+function readParams() {
+    let url = window.location.href.split('?');
+    let params, value;
+    if (url.length > 1) {
+        params = url[1].split('&');
+        for (i = 0; i < params.length; i++) {
+            let nameValue = params[i].split('=');
+            value = nameValue[1];
+        }
+        filter.value=value;
+        renderImages(value);
+    }
+}
+readParams();
