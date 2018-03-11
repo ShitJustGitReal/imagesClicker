@@ -76,6 +76,9 @@ function renderImages() {
         // create the delete button
         let deleteButton = document.createElement("button");
         deleteButton.innerText = 'X';
+        deleteButton.addEventListener('click', function () {
+            deleteImage(this, currentImage.id);
+        });
 
         // append image and button to item wrapper
         imageItem.append(image);
@@ -90,8 +93,16 @@ function renderImages() {
 renderImages();
 
 // function to delete an image thumbnail from the page and array
-function deleteImage(imageID){
-    console.log(imageID);
+function deleteImage(element, imageID){
+    // remove clicked item from the DOM
+    imagesWrapper.removeChild(element.parentNode); // alternative way --> element.parentNode.parentNode.removeChild(element.parentNode);
+    
+    // remove clicked item from the images array
+    for(i=0; i<myPicturesArray.length; i++){
+        if (myPicturesArray[i].id === imageID){
+            myPicturesArray.splice(i, 1);
+        }
+    }
 }
 
 /* ASIGNMENTS
