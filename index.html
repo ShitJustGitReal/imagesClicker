@@ -13,11 +13,23 @@
     <section class="wrapper">
         <h2>Large image</h2>
         <div id="large-image">
-                <img src="" alt="No JavaScript available">
+            <img src="" alt="No JavaScript available">
         </div>
     </section>
     <section class="wrapper">
-        <h2>Thumbnails</h2>
+        <div class="filter">
+            <h2>Thumbnails</h2>
+            <div>
+                <label for="filters"><h3>Filter by album</h3></label>
+                <select id="filters">
+                    <option value="all">All</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+        </div>
         <div id="thumbnails"></div>
 
     </section>
